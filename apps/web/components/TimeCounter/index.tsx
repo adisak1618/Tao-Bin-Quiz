@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState, useEffect } from "react";
 import { differenceInSeconds } from "date-fns";
 
@@ -30,7 +32,7 @@ function TimeCounter({ bootTime }: { bootTime: Date }) {
     return () => clearInterval(intervalId);
   }, []); // Empty dependency array means this effect runs only once after the initial render
 
-  return <p>{formatSeconds(seconds)}</p>;
+  return <div>{formatSeconds(seconds)}</div>;
 }
 
 export default TimeCounter;
