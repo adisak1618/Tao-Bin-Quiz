@@ -17,7 +17,8 @@ const resolvers = {
             const index = vendingMachines.findIndex(machine => machine.id === args.id);
             if (index === -1) return null;
             vendingMachines[index] = { ...vendingMachines[index], config: {
-              ...args.input
+              ...vendingMachines[index].config,
+              ...args.input,
             } };
             return vendingMachines[index];
         }
