@@ -1,5 +1,5 @@
-query vendingMachine($vendingMachineId: String!) {
-  vendingMachine(id: $vendingMachineId) {
+query vendingMachines {
+  vendingMachines {
     id
     name
     description
