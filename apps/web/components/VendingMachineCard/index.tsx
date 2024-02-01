@@ -30,7 +30,7 @@ export function VendingMachineCard({
         </div>
       </div>
 
-      <p className="line-clamp-2 flex-1 line-clamp-1">{description}</p>
+      <p className="line-clamp-1 flex-1">{description}</p>
       <div className="flex justify-between">
         <p>
           <b>Sales:</b> {currentSales}

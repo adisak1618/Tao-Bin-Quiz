@@ -1,0 +1,23 @@
+mutation updateVendingMechineConfig($updateVendingMachineConfigId: String!, $input: UpdateVendingMachineConfigInput!) {
+  updateVendingMachineConfig(id: $updateVendingMachineConfigId, input: $input) {
+    id
+    name
+    description
+    currentSales
+    lastBoots
+    logs {
+      title
+      description
+    }
+    status
+    statusMessage
+    config {
+      temperature
+      stockThresholds
+      operationalHours {
+        start
+        stop
+      }
+    }
+  }
+}
