@@ -1,0 +1,23 @@
+query vendingMachines {
+  vendingMachines {
+    id
+    name
+    description
+    currentSales
+    lastBoots
+    logs {
+      title
+      description
+    }
+    status
+    statusMessage
+    config {
+      temperature
+      stockThresholds
+      operationalHours {
+        start
+        stop
+      }
+    }
+  }
+}

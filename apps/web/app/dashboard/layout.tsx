@@ -3,12 +3,7 @@
 import Link from "next/link";
 import { ReactNode } from "react";
 import clsx from "clsx";
-import {
-  LogOutIcon,
-  ReceiptTextIcon,
-  UserCircle,
-  Package2Icon,
-} from "lucide-react";
+import { LogOutIcon, UserCircle, Package2Icon } from "lucide-react";
 import { usePathname } from "next/navigation";
 
 function LinkMenu({
