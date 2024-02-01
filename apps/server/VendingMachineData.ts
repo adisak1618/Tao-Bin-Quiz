@@ -1,6 +1,6 @@
 import { OpenStatus, VendingMachine } from "./types";
 
-const oneHourAgo = new Date(Date.now() - 3600000);
+const randomDateBeforeNow = () => new Date(Date.now() - Math.floor(Math.random() * 3600000));
 
 export const vendingMachinesData: VendingMachine[] = [
   {
@@ -11,13 +11,13 @@ export const vendingMachinesData: VendingMachine[] = [
     statusMessage: "Serving your favorites!",
     currentSales: 200,
     logs: [{ title: "Restock", description: "Thai tea leaves restocked" }],
-    lastBoots: oneHourAgo,
+    lastBoots: randomDateBeforeNow(),
     config: {
       temperature: 4,
       stockThresholds: 50,
       operationalHours: {
-        start: "2024-02-01T08:00:00Z",
-        stop: "2024-02-01T22:00:00Z",
+        start: "05:00",
+        stop: "02:00",
       }
     }
   },
@@ -29,13 +29,13 @@ export const vendingMachinesData: VendingMachine[] = [
     statusMessage: "Enjoy a warm welcome!",
     currentSales: 120,
     logs: [{ title: "Maintenance", description: "Espresso machine serviced" }],
-    lastBoots: oneHourAgo,
+    lastBoots: randomDateBeforeNow(),
     config: {
       temperature: 6,
       stockThresholds: 40,
       operationalHours: {
-        start: "2024-02-01T07:00:00Z",
-        stop: "2024-02-01T23:00:00Z",
+        start: "05:00",
+        stop: "02:00",
       }
     }
   },
@@ -47,13 +47,13 @@ export const vendingMachinesData: VendingMachine[] = [
     statusMessage: "Cool off with our special drinks!",
     currentSales: 180,
     logs: [{ title: "Update", description: "Added new flavor: Mango Sticky Rice Smoothie" }],
-    lastBoots: oneHourAgo,
+    lastBoots: randomDateBeforeNow(),
     config: {
       temperature: 3,
       stockThresholds: 30,
       operationalHours: {
-        start: "2024-02-01T10:00:00Z",
-        stop: "2024-02-01T20:00:00Z",
+        start: "05:00",
+        stop: "02:00",
       }
     }
 },
@@ -65,13 +65,13 @@ export const vendingMachinesData: VendingMachine[] = [
     statusMessage: "Launching soon with exotic flavors!",
     currentSales: 0,
     logs: [],
-    lastBoots: oneHourAgo,
+    lastBoots: randomDateBeforeNow(),
     config: {
       temperature: 5,
       stockThresholds: 50,
       operationalHours: {
-        start: "2024-02-15T09:00:00Z",
-        stop: "2024-02-15T22:00:00Z",
+        start: "05:00",
+        stop: "02:00",
       }
     }
   },
@@ -83,13 +83,13 @@ export const vendingMachinesData: VendingMachine[] = [
     statusMessage: "Bringing the heart of Bangkok to you.",
     currentSales: 95,
     logs: [{ title: "New Arrival", description: "Introducing Coconut Coffee" }],
-    lastBoots: oneHourAgo,
+    lastBoots: randomDateBeforeNow(),
     config: {
       temperature: 6,
       stockThresholds: 25,
       operationalHours: {
-        start: "2024-02-01T06:00:00Z",
-        stop: "2024-02-01T18:00:00Z",
+        start: "05:00",
+        stop: "02:00",
       }
     }
   },
@@ -101,13 +101,13 @@ export const vendingMachinesData: VendingMachine[] = [
     statusMessage: "A sip of history in every drink.",
     currentSales: 110,
     logs: [{ title: "Herbal Restock", description: "Lemongrass and Pandan refreshed" }],
-    lastBoots: oneHourAgo,
+    lastBoots: randomDateBeforeNow(),
     config: {
       temperature: 4,
       stockThresholds: 20,
       operationalHours: {
-        start: "2024-02-01T09:00:00Z",
-        stop: "2024-02-01T21:00:00Z",
+        start: "05:00",
+        stop: "02:00",
       }
     }
   },
@@ -115,17 +115,17 @@ export const vendingMachinesData: VendingMachine[] = [
     id: "vm-007",
     name: "Phuket Paradise",
     description: "Tropical smoothies and shakes, with fresh Thai fruits.",
-    status: OpenStatus.OPEN,
+    status: OpenStatus.CLOSE,
     statusMessage: "Taste the island breeze.",
     currentSales: 140,
     logs: [{ title: "Fruit Delivery", description: "Fresh mangoes and pineapples added" }],
-    lastBoots: oneHourAgo,
+    lastBoots: randomDateBeforeNow(),
     config: {
       temperature: 2,
       stockThresholds: 30,
       operationalHours: {
-        start: "2024-02-01T08:00:00Z",
-        stop: "2024-02-01T20:00:00Z",
+        start: "05:00",
+        stop: "02:00",
       }
     }
 },
@@ -137,13 +137,13 @@ export const vendingMachinesData: VendingMachine[] = [
     statusMessage: "Warm up with a spiced latte.",
     currentSales: 165,
     logs: [{ title: "Spice Restock", description: "Cinnamon and cardamom levels replenished" }],
-    lastBoots: oneHourAgo,
+    lastBoots: randomDateBeforeNow(),
     config: {
       temperature: 5,
       stockThresholds: 20,
       operationalHours: {
-        start: "2024-02-01T07:30:00Z",
-        stop: "2024-02-01T19:30:00Z",
+        start: "05:00",
+        stop: "02:00",
       }
     }
 },
@@ -155,13 +155,13 @@ export const vendingMachinesData: VendingMachine[] = [
     statusMessage: "Revitalize with a fermented twist.",
     currentSales: 90,
     logs: [{ title: "Kombucha Brew", description: "New batch of lychee kombucha ready" }],
-    lastBoots: oneHourAgo,
+    lastBoots: randomDateBeforeNow(),
     config: {
       temperature: 4,
       stockThresholds: 25,
       operationalHours: {
-        start: "2024-02-01T09:00:00Z",
-        stop: "2024-02-01T21:00:00Z",
+        start: "05:00",
+        stop: "02:00",
       }
     }
 },
@@ -169,17 +169,17 @@ export const vendingMachinesData: VendingMachine[] = [
     id: "vm-010",
     name: "Samui Squeeze",
     description: "Freshly squeezed juices, featuring Thailand's exotic fruits.",
-    status: OpenStatus.OPEN,
+    status: OpenStatus.UNDER_MAINTENANCE,
     statusMessage: "A squeeze of tropical heaven.",
     currentSales: 200,
     logs: [{ title: "Juice Menu Update", description: "Dragon fruit juice now available" }],
-    lastBoots: oneHourAgo,
+    lastBoots: randomDateBeforeNow(),
     config: {
       temperature: 3,
       stockThresholds: 35,
       operationalHours: {
-        start: "2024-02-01T08:00:00Z",
-        stop: "2024-02-01T22:00:00Z",
+        start: "05:00",
+        stop: "02:00",
       }
     }
 }
