@@ -58,8 +58,8 @@ export type OperationalHoursInput = {
 
 export type Query = {
   __typename?: 'Query';
-  vendingMachine?: Maybe<VendingMachine>;
-  vendingMachines: Array<Maybe<VendingMachine>>;
+  vendingMachine: VendingMachine;
+  vendingMachines: Array<VendingMachine>;
 };
 
 
@@ -96,7 +96,7 @@ export type VendingMachineConfig = {
 export type VendingMachinesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type VendingMachinesQuery = { __typename?: 'Query', vendingMachines: Array<{ __typename?: 'VendingMachine', id: string, name: string, description: string, currentSales: number, lastBoots: string, status: OpenStatus, statusMessage?: string | null, logs: Array<{ __typename?: 'LogMessage', title: string, description: string } | null>, config: { __typename?: 'VendingMachineConfig', temperature: number, stockThresholds: number, operationalHours: { __typename?: 'OperationalHours', start: string, stop: string } } } | null> };
+export type VendingMachinesQuery = { __typename?: 'Query', vendingMachines: Array<{ __typename?: 'VendingMachine', id: string, name: string, description: string, currentSales: number, lastBoots: string, status: OpenStatus, statusMessage?: string | null, logs: Array<{ __typename?: 'LogMessage', title: string, description: string } | null>, config: { __typename?: 'VendingMachineConfig', temperature: number, stockThresholds: number, operationalHours: { __typename?: 'OperationalHours', start: string, stop: string } } }> };
 
 
 export const VendingMachinesDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"vendingMachines"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"vendingMachines"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"currentSales"}},{"kind":"Field","name":{"kind":"Name","value":"lastBoots"}},{"kind":"Field","name":{"kind":"Name","value":"logs"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"description"}}]}},{"kind":"Field","name":{"kind":"Name","value":"status"}},{"kind":"Field","name":{"kind":"Name","value":"statusMessage"}},{"kind":"Field","name":{"kind":"Name","value":"config"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"temperature"}},{"kind":"Field","name":{"kind":"Name","value":"stockThresholds"}},{"kind":"Field","name":{"kind":"Name","value":"operationalHours"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"start"}},{"kind":"Field","name":{"kind":"Name","value":"stop"}}]}}]}}]}}]}}]} as unknown as DocumentNode<VendingMachinesQuery, VendingMachinesQueryVariables>;
