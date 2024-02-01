@@ -1,5 +1,5 @@
 {
-  "name": "TaoBinQuiz",
+  "name": "tao-bin-quiz",
   "private": true,
   "scripts": {
     "build": "turbo build",
