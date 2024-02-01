@@ -5,7 +5,13 @@
       {
         "name": "next"
       }
-    ]
+    ],
+    "paths": {
+      "@components/*": ["./components/*"],
+      "@libs/*": ["./libs/*"],
+      "@graphql/*": ["./graphql/*"],
+      "@container/*": ["./container/*"]
+    },
   },
   "include": [
     "next-env.d.ts",

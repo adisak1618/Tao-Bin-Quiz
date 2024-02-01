@@ -37,8 +37,8 @@ export const typeDefs = gql`
   }
 
   type Query {
-    vendingMachines: [VendingMachine]!
-    vendingMachine(id: String!): VendingMachine
+    vendingMachines: [VendingMachine!]!
+    vendingMachine(id: String!): VendingMachine!
   }
 
   type Mutation {

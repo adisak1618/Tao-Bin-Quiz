@@ -1,6 +1,7 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { ApolloProviderComponent } from "@components/ApolloProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -11,16 +12,13 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-  auth,
 }: {
   children: React.ReactNode;
-  auth: React.ReactNode;
 }): JSX.Element {
   return (
     <html lang="en">
       <body className={inter.className}>
-        {auth}
-        {children}
+        <ApolloProviderComponent>{children}</ApolloProviderComponent>
       </body>
     </html>
   );
