@@ -4,7 +4,7 @@ import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 import { ReactNode } from "react";
 
 const client = new ApolloClient({
-  uri: "http://localhost:4000/",
+  uri: process.env.NEXT_PUBLIC_API_ENDPOINT,
   cache: new InMemoryCache(),
 });
 

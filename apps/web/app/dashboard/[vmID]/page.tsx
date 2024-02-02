@@ -1,16 +1,12 @@
 "use client";
 
 import { useQuery } from "@apollo/client";
-import { ArrowLeftIcon, SettingsIcon } from "lucide-react";
+import { ArrowLeftIcon } from "lucide-react";
 import { VendingMachineDocument } from "@graphql/generated/graphql";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { StatusLabel } from "@components/VendingMachineCard/status";
 import TimeCounter from "@components/TimeCounter";
-import { Button } from "@components/ui/button";
-import { Modal } from "@components/Modal";
-import { useState } from "react";
-import { VendingMechineSettingFormProvider } from "@container/VendingMechineSettingModal/VendingMechineSettingFormProvider";
 import { VendingMachineSettingModal } from "@container/VendingMechineSettingModal";
 
 export default function DashboardPage({
@@ -18,7 +14,6 @@ export default function DashboardPage({
 }: {
   params: { vmID: string };
 }) {
-  const [isOpen, setIsOpen] = useState(false);
   const { data: vendingMachine, loading } = useQuery(VendingMachineDocument, {
     variables: {
       vendingMachineId: params.vmID,
@@ -37,8 +32,7 @@ export default function DashboardPage({
           <ArrowLeftIcon />
         </Link>
         <p className="flex gap-2 text-primary">
-          <span className="uppercase">#{vendingMachineData?.id}</span>{" "}
-          {vendingMachineData?.name}
+          #{vendingMachineData?.id} -{vendingMachineData?.name}
         </p>
       </div>
       <hr className="m3-10" />
@@ -120,11 +114,6 @@ export default function DashboardPage({
           </div>
 
           <VendingMachineSettingModal {...vendingMachineData!} />
-
-          <div className="!mt-10">
-            <p className="text-2xl font-bold leading-[1em]">System Logs</p>
-          </div>
-          <hr className="!mt-2" />
         </div>
       </div>
     </>

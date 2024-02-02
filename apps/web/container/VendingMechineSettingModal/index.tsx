@@ -9,6 +9,7 @@ import { HFSelect } from "@components/Inputs/HFSelect";
 import { generateTimes } from "./generateTimes";
 import { Label } from "@components/ui/label";
 import { useVendingMechineConfig } from "@components/updateVendingMechineHook";
+import { AnimatePresence } from "framer-motion";
 
 type SettingFormProps = {
   temperature: number;
@@ -64,66 +65,71 @@ export function VendingMachineSettingModal({
         <SettingsIcon className="w-4 h-4" />
         Edit Setting
       </Button>
-      {isOpen && (
-        <Modal title="Edit Setting" handleClose={() => setIsOpen(false)}>
-          <FormProvider {...methods}>
-            <form
-              className="space-y-3"
-              onSubmit={methods.handleSubmit(onSubmit)}
-            >
-              <div>
-                <Label htmlFor="temperature">Temperature</Label>
-                <HFInput
-                  type="number"
-                  name="temperature"
-                  placeholder="temperature"
-                />
-              </div>
-              <div>
-                <Label htmlFor="temperature">Stock Thresholds</Label>
-                <HFInput
-                  type="number"
-                  name="stockThresholds"
-                  placeholder="Stock Thresholds"
-                />
-              </div>
-              <div className="flex gap-3">
-                <div className="flex-1">
-                  <Label htmlFor="temperature">Start Operational Hours</Label>
-                  <HFSelect
-                    name="operationalHours.start"
-                    options={
-                      generateTimes().map(({ label, value }) => ({
-                        label,
-                        value,
-                      })) || []
-                    }
-                    placeholder="Start"
+      <AnimatePresence mode="wait" initial={false} onExitComplete={() => null}>
+        {isOpen && (
+          <Modal title="Edit Setting" handleClose={() => setIsOpen(false)}>
+            <FormProvider {...methods}>
+              <form
+                className="space-y-3"
+                onSubmit={methods.handleSubmit(onSubmit)}
+              >
+                <div>
+                  <Label htmlFor="temperature">Temperature</Label>
+                  <HFInput
+                    type="number"
+                    name="temperature"
+                    placeholder="temperature"
                   />
                 </div>
-                <div className="flex-1">
-                  <Label htmlFor="temperature">Stop Operational Hours</Label>
-                  <HFSelect
-                    name="operationalHours.stop"
-                    options={
-                      generateTimes().map(({ label, value }) => ({
-                        label,
-                        value,
-                      })) || []
-                    }
-                    placeholder="Start"
+                <div>
+                  <Label htmlFor="temperature">Stock Thresholds</Label>
+                  <HFInput
+                    type="number"
+                    name="stockThresholds"
+                    placeholder="Stock Thresholds"
                   />
                 </div>
-              </div>
-              <div className="text-center">
-                <Button loading={updateVendingMechineLoading} className="mt-3">
-                  Save
-                </Button>
-              </div>
-            </form>
-          </FormProvider>
-        </Modal>
-      )}
+                <div className="flex gap-3">
+                  <div className="flex-1">
+                    <Label htmlFor="temperature">Start Operational Hours</Label>
+                    <HFSelect
+                      name="operationalHours.start"
+                      options={
+                        generateTimes().map(({ label, value }) => ({
+                          label,
+                          value,
+                        })) || []
+                      }
+                      placeholder="Start"
+                    />
+                  </div>
+                  <div className="flex-1">
+                    <Label htmlFor="temperature">Stop Operational Hours</Label>
+                    <HFSelect
+                      name="operationalHours.stop"
+                      options={
+                        generateTimes().map(({ label, value }) => ({
+                          label,
+                          value,
+                        })) || []
+                      }
+                      placeholder="Start"
+                    />
+                  </div>
+                </div>
+                <div className="text-center">
+                  <Button
+                    loading={updateVendingMechineLoading}
+                    className="mt-3"
+                  >
+                    Save
+                  </Button>
+                </div>
+              </form>
+            </FormProvider>
+          </Modal>
+        )}
+      </AnimatePresence>
     </>
   );
 }

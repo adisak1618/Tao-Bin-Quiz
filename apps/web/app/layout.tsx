@@ -1,9 +1,20 @@
 import "./globals.css";
-import type { Metadata } from "next";
+
+import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import { ApolloProviderComponent } from "@components/ApolloProvider";
+import { AuthProvider } from "@components/AuthProvider";
 
 const inter = Inter({ subsets: ["latin"] });
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+  // Also supported by less commonly used
+  // interactiveWidget: 'resizes-visual',
+};
 
 export const metadata: Metadata = {
   title: "Create Turborepo",
@@ -18,7 +29,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <ApolloProviderComponent>{children}</ApolloProviderComponent>
+        <AuthProvider>
+          <ApolloProviderComponent>{children}</ApolloProviderComponent>
+        </AuthProvider>
       </body>
     </html>
   );
