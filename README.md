@@ -1,81 +1,33 @@
-# Turborepo starter
+# Tao Bin Quiz
 
-This is an official starter Turborepo.
+ผมตัดสินใจใช้ Apollo Server สำหรับข้อมูล mockup แทนที่จะใช้ JSON-SERVER ตามที่แนะนำใน Docs. ส่วนตัวคิดว่าการทำงานกับ GraphQL API นั้นง่ายกว่าและทำให้การพัฒนาฝั่ง frontend ง่ายขึ้นมาก จากการคุยทางโทรศัพท์ที่ผ่านมา ผมเข้าใจว่าทีมกำลังใช้ GraphQL API อยู่แล้ว สำหรับ UI ฉันใช้ Tailwind CSS และ Shadcn เป็นหลัก แต่ไม่ได้ใช้เวลามากนักในการออกแบบ ผมมีความสนใจในการออกแบบอยู่บ้างแต่ยังอยู่ในช่วงพัฒนา ดังนั้นฉันจึงเน้นไปที่การทำให้มีฟีเจอร์ที่ครบถ้วนเป็นหลัก
 
-## Using this example
+## Tecnology use
 
-Run the following command:
+- **TurboRepo**: เนื่องจากโปรเจกต์นี้มีทั้ง frontend และ backend จึงตัดสินใจใช้ Monorepo
+- **Next.js**: ใช้สำหรับเขียน React และจัดการเรื่องการ route
+- **React Hook Form**: สำหรับจัดการฟอร์ม
+- **Next Auth**: สำหรับการจัดการ Authentication อย่างมีประสิทธิภาพ
+- **Zod**: ใช้สำหรับการ Validate ฟอร์ม และใช้เป็น type guard สำหรับ Rest API ที่ไม่มี type safety เหมือนกับ GraphQL API
+- **Framer Motion**: สำหรับการทำ animation
+- **TypeScript**
+- **Tailwind CSS**: สำหรับการเขียน style
+- **CLSX**: สำหรับจัดการเงื่อนไขของ style
+- **Apollo Client**: สำหรับจัดการ State ของ GraphQL
+- **Apollo Server**: ใช้สำหรับ Mock Data เพื่อใช้ในหน้า admin
+- **GraphQL Codegen**: ช่วยสร้างโค้ด TypeScript จาก Schema ของ GraphQL
+- **shadcn/ui**: คือ UI Library ที่เบาและทำให้สามารถ customize ได้อย่างอิสระ
+
+## Setup Project
+Run the following command for install on the root of the project:
 
 ```sh
-npx create-turbo@latest
+pnpm install
 ```
 
-## What's inside?
+Start Server and Website by run following command:
 
-This Turborepo includes the following packages/apps:
-
-### Apps and Packages
-
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
-
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
-
-### Utilities
-
-This Turborepo has some additional tools already setup for you:
-
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
-
-### Build
-
-To build all apps and packages, run the following command:
-
-```
-cd my-turborepo
-pnpm build
-```
-
-### Develop
-
-To develop all apps and packages, run the following command:
-
-```
-cd my-turborepo
+```sh
 pnpm dev
 ```
 
-### Remote Caching
-
-Turborepo can use a technique known as [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
-
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup), then enter the following commands:
-
-```
-cd my-turborepo
-npx turbo login
-```
-
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
-
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
-
-```
-npx turbo link
-```
-
-## Useful Links
-
-Learn more about the power of Turborepo:
-
-- [Tasks](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks)
-- [Caching](https://turbo.build/repo/docs/core-concepts/caching)
-- [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching)
-- [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
-- [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
-- [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
