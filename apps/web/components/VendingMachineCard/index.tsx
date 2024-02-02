@@ -10,7 +10,7 @@ export function VendingMachineCard({
   currentSales,
   lastBoots,
   status,
-}: VendingMachinesQuery["vendingMachines"][0]) {
+}: VendingMachinesQuery["vendingMachines"]["nodes"][0]) {
   return (
     <div className="border border-gray-100 bg-white rounded-md p-6 shadow-sm space-y-1.5 flex flex-col transform-gpu duration-200 hover:scale-[103%]">
       <p className="text-xl flex gap-2 flex-wrap">
