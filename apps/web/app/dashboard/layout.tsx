@@ -18,7 +18,7 @@ function LinkMenu({
   children: ReactNode;
 }) {
   const buttonClass = clsx(
-    "text-lg px-4 py-3 flex gap-3 hover:bg-foreground hover:!text-primary hover:font-bold rounded-md cursor-pointer",
+    "text-lg px-3 md:px-4 py-2 md:py-3 flex gap-3 hover:bg-foreground hover:!text-primary hover:font-bold rounded-md cursor-pointer",
     active && "font-bold !text-primary bg-foreground"
   );
   if (href)
@@ -41,7 +41,7 @@ export default function DashboardLayout({
   return (
     <div className="bg-gray-50 min-h-screen transition duration-150">
       <div className="flex">
-        <nav className="py-10 px-3 md:w-[250px] flex flex-col border-r border-gray-200 space-y-1.5">
+        <nav className="py-10 px-2 md:px-3 md:w-[250px] flex flex-col border-r border-gray-200 space-y-1.5">
           {isTablet && (
             <p className="text-2xl text-center font-bold pt-10 pb-4">
               {data?.user?.name}
@@ -69,7 +69,7 @@ export default function DashboardLayout({
             </LinkMenu>
           </div>
         </nav>
-        <div className="flex-1">{children}</div>
+        <div className="flex-1 relative">{children}</div>
       </div>
     </div>
   );

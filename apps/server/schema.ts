@@ -41,8 +41,13 @@ export const typeDefs = gql`
     stop: String!
   }
 
+  type VendingMachinesResponse {
+    total: Int!
+    nodes: [VendingMachine!]!
+  }
+
   type Query {
-    vendingMachines(limit: Int, offset: Int, status: OpenStatus, sort: SortEnum): [VendingMachine!]!
+    vendingMachines(limit: Int, offset: Int, status: OpenStatus, sort: SortEnum): VendingMachinesResponse!
     vendingMachine(id: String!): VendingMachine!
   }
 

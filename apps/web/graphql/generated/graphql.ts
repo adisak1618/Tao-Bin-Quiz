@@ -59,13 +59,26 @@ export type OperationalHoursInput = {
 export type Query = {
   __typename?: 'Query';
   vendingMachine: VendingMachine;
-  vendingMachines: Array<VendingMachine>;
+  vendingMachines: VendingMachinesResponse;
 };
 
 
 export type QueryVendingMachineArgs = {
   id: Scalars['String']['input'];
 };
+
+
+export type QueryVendingMachinesArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  sort?: InputMaybe<SortEnum>;
+  status?: InputMaybe<OpenStatus>;
+};
+
+export enum SortEnum {
+  SaleAsc = 'SALE_ASC',
+  SaleDesc = 'SALE_DESC'
+}
 
 export type UpdateVendingMachineConfigInput = {
   operationalHours?: InputMaybe<OperationalHoursInput>;
@@ -93,6 +106,12 @@ export type VendingMachineConfig = {
   temperature: Scalars['Float']['output'];
 };
 
+export type VendingMachinesResponse = {
+  __typename?: 'VendingMachinesResponse';
+  nodes: Array<VendingMachine>;
+  total: Scalars['Int']['output'];
+};
+
 export type UpdateVendingMechineConfigMutationVariables = Exact<{
   updateVendingMachineConfigId: Scalars['String']['input'];
   input: UpdateVendingMachineConfigInput;
@@ -108,12 +127,17 @@ export type VendingMachineQueryVariables = Exact<{
 
 export type VendingMachineQuery = { __typename?: 'Query', vendingMachine: { __typename?: 'VendingMachine', id: string, name: string, description: string, currentSales: number, lastBoots: string, status: OpenStatus, statusMessage?: string | null, logs: Array<{ __typename?: 'LogMessage', title: string, description: string } | null>, config: { __typename?: 'VendingMachineConfig', temperature: number, stockThresholds: number, operationalHours: { __typename?: 'OperationalHours', start: string, stop: string } } } };
 
-export type VendingMachinesQueryVariables = Exact<{ [key: string]: never; }>;
+export type VendingMachinesQueryVariables = Exact<{
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  sort?: InputMaybe<SortEnum>;
+  status?: InputMaybe<OpenStatus>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+}>;
 
 
-export type VendingMachinesQuery = { __typename?: 'Query', vendingMachines: Array<{ __typename?: 'VendingMachine', id: string, name: string, description: string, currentSales: number, lastBoots: string, status: OpenStatus, statusMessage?: string | null, logs: Array<{ __typename?: 'LogMessage', title: string, description: string } | null>, config: { __typename?: 'VendingMachineConfig', temperature: number, stockThresholds: number, operationalHours: { __typename?: 'OperationalHours', start: string, stop: string } } }> };
+export type VendingMachinesQuery = { __typename?: 'Query', vendingMachines: { __typename?: 'VendingMachinesResponse', total: number, nodes: Array<{ __typename?: 'VendingMachine', id: string, name: string, description: string, currentSales: number, lastBoots: string, status: OpenStatus, statusMessage?: string | null, logs: Array<{ __typename?: 'LogMessage', title: string, description: string } | null>, config: { __typename?: 'VendingMachineConfig', temperature: number, stockThresholds: number, operationalHours: { __typename?: 'OperationalHours', start: string, stop: string } } }> } };
 
 
 export const UpdateVendingMechineConfigDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"updateVendingMechineConfig"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"updateVendingMachineConfigId"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"UpdateVendingMachineConfigInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"updateVendingMachineConfig"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"updateVendingMachineConfigId"}}},{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"currentSales"}},{"kind":"Field","name":{"kind":"Name","value":"lastBoots"}},{"kind":"Field","name":{"kind":"Name","value":"logs"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"description"}}]}},{"kind":"Field","name":{"kind":"Name","value":"status"}},{"kind":"Field","name":{"kind":"Name","value":"statusMessage"}},{"kind":"Field","name":{"kind":"Name","value":"config"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"temperature"}},{"kind":"Field","name":{"kind":"Name","value":"stockThresholds"}},{"kind":"Field","name":{"kind":"Name","value":"operationalHours"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"start"}},{"kind":"Field","name":{"kind":"Name","value":"stop"}}]}}]}}]}}]}}]} as unknown as DocumentNode<UpdateVendingMechineConfigMutation, UpdateVendingMechineConfigMutationVariables>;
 export const VendingMachineDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"vendingMachine"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"vendingMachineId"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"vendingMachine"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"vendingMachineId"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"currentSales"}},{"kind":"Field","name":{"kind":"Name","value":"lastBoots"}},{"kind":"Field","name":{"kind":"Name","value":"logs"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"description"}}]}},{"kind":"Field","name":{"kind":"Name","value":"status"}},{"kind":"Field","name":{"kind":"Name","value":"statusMessage"}},{"kind":"Field","name":{"kind":"Name","value":"config"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"temperature"}},{"kind":"Field","name":{"kind":"Name","value":"stockThresholds"}},{"kind":"Field","name":{"kind":"Name","value":"operationalHours"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"start"}},{"kind":"Field","name":{"kind":"Name","value":"stop"}}]}}]}}]}}]}}]} as unknown as DocumentNode<VendingMachineQuery, VendingMachineQueryVariables>;
-export const VendingMachinesDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"vendingMachines"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"vendingMachines"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"currentSales"}},{"kind":"Field","name":{"kind":"Name","value":"lastBoots"}},{"kind":"Field","name":{"kind":"Name","value":"logs"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"description"}}]}},{"kind":"Field","name":{"kind":"Name","value":"status"}},{"kind":"Field","name":{"kind":"Name","value":"statusMessage"}},{"kind":"Field","name":{"kind":"Name","value":"config"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"temperature"}},{"kind":"Field","name":{"kind":"Name","value":"stockThresholds"}},{"kind":"Field","name":{"kind":"Name","value":"operationalHours"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"start"}},{"kind":"Field","name":{"kind":"Name","value":"stop"}}]}}]}}]}}]}}]} as unknown as DocumentNode<VendingMachinesQuery, VendingMachinesQueryVariables>;
+export const VendingMachinesDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"vendingMachines"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"limit"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"sort"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"SortEnum"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"status"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"OpenStatus"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"offset"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"vendingMachines"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"limit"},"value":{"kind":"Variable","name":{"kind":"Name","value":"limit"}}},{"kind":"Argument","name":{"kind":"Name","value":"sort"},"value":{"kind":"Variable","name":{"kind":"Name","value":"sort"}}},{"kind":"Argument","name":{"kind":"Name","value":"status"},"value":{"kind":"Variable","name":{"kind":"Name","value":"status"}}},{"kind":"Argument","name":{"kind":"Name","value":"offset"},"value":{"kind":"Variable","name":{"kind":"Name","value":"offset"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"total"}},{"kind":"Field","name":{"kind":"Name","value":"nodes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"currentSales"}},{"kind":"Field","name":{"kind":"Name","value":"lastBoots"}},{"kind":"Field","name":{"kind":"Name","value":"logs"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"description"}}]}},{"kind":"Field","name":{"kind":"Name","value":"status"}},{"kind":"Field","name":{"kind":"Name","value":"statusMessage"}},{"kind":"Field","name":{"kind":"Name","value":"config"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"temperature"}},{"kind":"Field","name":{"kind":"Name","value":"stockThresholds"}},{"kind":"Field","name":{"kind":"Name","value":"operationalHours"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"start"}},{"kind":"Field","name":{"kind":"Name","value":"stop"}}]}}]}}]}}]}}]}}]} as unknown as DocumentNode<VendingMachinesQuery, VendingMachinesQueryVariables>;

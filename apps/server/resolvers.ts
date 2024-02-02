@@ -11,10 +11,17 @@ interface VendingMachinesArgs {
     sort?: 'SALE_ASC' | 'SALE_DESC';
 }
 
+
+type VendingMachinesResponse =  {
+    total: number;
+    nodes: VendingMachine[];
+  }
+
 const resolvers = {
     Query: {
-        vendingMachines: (_: any, args: VendingMachinesArgs): VendingMachine[] => {
+        vendingMachines: (_: any, args: VendingMachinesArgs): VendingMachinesResponse => {
             let result = vendingMachines;
+            let total = 0;
 
             // Filter by status if provided
             if (args.status) {
@@ -38,12 +45,17 @@ const resolvers = {
                
             }
 
+            total = result.length;
+
             // Apply pagination
             if (typeof args.offset === 'number' && typeof args.limit === 'number') {
                 result = result.slice(args.offset, args.offset + args.limit);
             }
 
-            return result;
+            return {
+                nodes: result,
+                total,
+            };
         },
         vendingMachine: (_: any, args: { id: string }): VendingMachine | undefined => {
             return vendingMachines.find(machine => machine.id === args.id);

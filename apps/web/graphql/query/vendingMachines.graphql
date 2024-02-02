@@ -1,22 +1,25 @@
-query vendingMachines {
-  vendingMachines {
-    id
-    name
-    description
-    currentSales
-    lastBoots
-    logs {
-      title
+query vendingMachines($limit: Int, $sort: SortEnum, $status: OpenStatus, $offset: Int) {
+  vendingMachines(limit: $limit, sort: $sort, status: $status, offset: $offset) {
+    total
+    nodes {
+      id
+      name
       description
-    }
-    status
-    statusMessage
-    config {
-      temperature
-      stockThresholds
-      operationalHours {
-        start
-        stop
+      currentSales
+      lastBoots
+      logs {
+        title
+        description
+      }
+      status
+      statusMessage
+      config {
+        temperature
+        stockThresholds
+        operationalHours {
+          start
+          stop
+        }
       }
     }
   }
