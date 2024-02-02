@@ -5,6 +5,10 @@ export enum OpenStatus {
   PRE_LAUNCH = "PRE_LAUNCH"
 }
 
+export enum SortEnum {
+  SALE_ASC = "SALE_ASC",
+  SALE_DESC = "SALE_DESC"
+}
 export interface LogMessage {
   title: string;
   description: string;

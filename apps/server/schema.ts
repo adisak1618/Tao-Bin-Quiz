@@ -8,6 +8,11 @@ export const typeDefs = gql`
     PRE_LAUNCH
   }
 
+  enum SortEnum {
+    SALE_DESC
+    SALE_ASC
+  }
+
   type LogMessage {
     title: String!
     description: String!
@@ -37,7 +42,7 @@ export const typeDefs = gql`
   }
 
   type Query {
-    vendingMachines: [VendingMachine!]!
+    vendingMachines(limit: Int, offset: Int, status: OpenStatus, sort: SortEnum): [VendingMachine!]!
     vendingMachine(id: String!): VendingMachine!
   }
 
